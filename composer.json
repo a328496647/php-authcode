@@ -1,0 +1,19 @@
+{
+    "name": "a328496647/authcode",
+    "description": "discuz authcode 加解密算法优化，可安全用于URL传输",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "lixx",
+            "email": "sss60@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "a328496647\\authcode\\": "src/"
+        }
+    }
+}
