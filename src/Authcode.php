@@ -2,8 +2,6 @@
 namespace a328496647\Authcode;
 
 class Authcode {
-    public static $salt_length = 22;
-
     public static function encrypt($str, $key, $expiry = 0) {
         return static::authcode($str, $key, true, $expiry);
     }
@@ -32,7 +30,7 @@ class Authcode {
     }
 
     private static function authcode($str, $key, $encrypt = false, $expiry = 0) {
-        $sl = static::$salt_length;
+        $sl = 4;
 
         $key = md5($key);
         $keya = md5(substr($key, 0, 16));
