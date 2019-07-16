@@ -1,6 +1,6 @@
 {
-    "name": "lee2son/authcode",
-    "description": "一种轻量级的对称加密算法，加密结果长度短；支持加密数据过期时间；",
+    "name": "lee2son/crypto",
+    "description": "收录一些非主流的加密算法",
     "license": "MIT",
     "authors": [
         {
@@ -13,7 +13,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Lee2son\\Authcode\\": "src/"
+            "Lee2son\\Crypto\\": "src/"
         }
     }
 }

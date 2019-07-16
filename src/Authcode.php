@@ -1,5 +1,5 @@
 <?php
-namespace Lee2son\Authcode;
+namespace Lee2son\Crypto;
 
 class Authcode {
     public static function encrypt($str, $key, $expiry = 0) {
@@ -10,26 +10,15 @@ class Authcode {
         return static::authcode($str, $key, false, 0);
     }
 
-    private static function base64Decode($str) {
-        $str = str_replace('_', '+', $str);
-        $str = str_replace('-', '/', $str);
-        $str = base64_decode($str);
-        return $str;
-    }
-
-    private static function base64Encode($str) {
-        $str = base64_encode($str);
-        $str = str_replace('+', '_', $str);
-        $str = str_replace('/', '-', $str);
-        $str = str_replace('=', '', $str);
-        return $str;
-    }
-
-    private static function uuid() {
-        return static::base64Encode(md5(mt_rand(0, 999999) . uniqid() . mt_rand(0, 999999) . microtime() . mt_rand(0, 999999), true));
-    }
-
     private static function authcode($str, $key, $encrypt = false, $expiry = 0) {
+        $base64 = new class extends Base64 {
+            const REPLACE_DIVISOR = '-';
+            const REPLACE_PLUS = '_';
+            const REPLACE_EQUAL = '';
+        };
+
+        $base64::encode('sadfasdf');
+
         $sl = 4;
 
         $key = md5($key);
@@ -38,7 +27,7 @@ class Authcode {
 
         if($sl > 0) {
             if($encrypt) {
-                $keyc = substr(static::uuid(), 0, $sl);
+                $keyc = substr(md5(uniqid()), 0, $sl);
             } else {
                 $keyc = substr($str, 0, $sl);
             }
@@ -52,7 +41,7 @@ class Authcode {
         if($encrypt) {
             $str = sprintf('%010d%s%s', ($expiry ? $expiry + time() : 0), substr(md5($str . $keyb), 0, 16), $str);
         } else {
-            $str = static::base64Decode(substr($str, $sl));
+            $str = $base64::decode(substr($str, $sl));
         }
 
         $len = strlen($str);
@@ -89,7 +78,7 @@ class Authcode {
                 return '';
             }
         } else {
-            return $keyc . str_replace('=', '', static::base64Encode($res));
+            return $keyc . str_replace('=', '', $base64::encode($res));
         }
     }
 }
