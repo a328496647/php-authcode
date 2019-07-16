@@ -4,7 +4,7 @@ namespace Lee2son\Crypto;
 class Base64 {
     const REPLACE_PLUS = '+';
     const REPLACE_DIVISOR = '-';
-    const REPLACE_EQUAL = '';
+    const REPLACE_EQUAL = '=';
 
     public static function encode($str)
     {
