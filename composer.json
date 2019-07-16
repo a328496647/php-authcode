@@ -1,6 +1,6 @@
 {
     "name": "lee2son/authcode",
-    "description": "discuz authcode 加解密算法优化，可安全用于URL传输",
+    "description": "一种轻量级的对称加密算法，加密结果长度短；支持加密数据过期时间；",
     "license": "MIT",
     "authors": [
         {
