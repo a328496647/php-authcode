@@ -1,5 +1,5 @@
 <?php
-namespace a328496647\Authcode;
+namespace Lee2son\Authcode;
 
 class Authcode {
     public static function encrypt($str, $key, $expiry = 0) {

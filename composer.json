@@ -1,5 +1,5 @@
 {
-    "name": "a328496647/authcode",
+    "name": "lee2son/authcode",
     "description": "discuz authcode 加解密算法优化，可安全用于URL传输",
     "license": "MIT",
     "authors": [
@@ -13,7 +13,7 @@
     },
     "autoload": {
         "psr-4": {
-            "a328496647\\Authcode\\": "src/"
+            "Lee2son\\Authcode\\": "src/"
         }
     }
 }
